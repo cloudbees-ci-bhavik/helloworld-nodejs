@@ -41,9 +41,8 @@ pipeline {
             FAVORITE_COLOR = 'BLUE'
             SERVICE_CREDS = credentials('example-service-username-password')
           }
-          when {
-            environment name: 'FAVORITE_COLOR', value: 'BLUE'
-            beforeAgent true
+          options {
+            timeout(time: 30, unit: 'SECONDS') 
           }
           input {
             message "Should we continue with deployment?"
